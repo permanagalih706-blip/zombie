@@ -295,53 +295,6 @@
         }
 
         /* =========================================================================
-           [CUSTOM WEAPON CREATION SANBOX PANEL]
-           ========================================================================= */
-        .custom-panel {
-            background: #111827;
-            border: 1px solid #4b5563;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 5px;
-            text-align: left;
-        }
-        .custom-panel-title {
-            font-size: 12px;
-            font-weight: bold;
-            color: #3b82f6;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-        .input-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            font-size: 11px;
-        }
-        .input-field {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .input-field label {
-            color: #9ca3af;
-            font-weight: 600;
-        }
-        .input-field input, .input-field select {
-            background: #1f2937;
-            border: 1px solid #4b5563;
-            color: #fff;
-            padding: 4px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-            outline: none;
-        }
-        .input-field input:focus {
-            border-color: #3b82f6;
-        }
-
-        /* =========================================================================
            [FLOATING NOTIFICATION CENTER FEED]
            ========================================================================= */
         #notificationLog {
@@ -382,71 +335,30 @@
 
         <div id="mainMenu" class="overlay">
             <h2>Zombie Outbreak</h2>
-            <p>Bertahan melewati 1000 Wave infeksi. Dilengkapi kustomisasi senjata mandiri, efek peluru tembus, ledakan dinamis, knockback, dan jaminan pemulihan state checkpoint!</p>
+            <p>Bertahan melewati 1000 Wave infeksi. Dilengkapi efek peluru tembus, ledakan dinamis, knockback, dan jaminan pemulihan state checkpoint!</p>
             
             <div class="menu-group">
-                <div style="font-weight: bold; text-align: left; font-size: 12px; color: #9ca3af;">PILIH MODE GAME:</div>
+                <div style="font-weight: bold; text-align: left; font-size: 12px; color: #9ca3af;">PILIH KONTROL:</div>
+                <div class="menu-row">
+                    <button id="btnCtrlNormal" class="btn btn-select active" onclick="setControlMode('normal')">Mode Biasa</button>
+                    <button id="btnCtrlNoMouse" class="btn btn-select" onclick="setControlMode('nomouse')">Tanpa Mouse</button>
+                </div>
+
+                <div style="font-weight: bold; text-align: left; font-size: 12px; color: #9ca3af; margin-top: 5px;">PILIH MODE GAME:</div>
                 <div class="menu-row">
                     <button id="btnModeCampaign" class="btn btn-select active" onclick="setMode('campaign')">Campaign (1000 W)</button>
                     <button id="btnModeEndless" class="btn btn-select" onclick="setMode('endless')">Endless Mode</button>
                     <button id="btnModeDebug" class="btn btn-select btn-debug-tab" onclick="setMode('debug')">🛠️ Debug Mode</button>
                 </div>
 
-                <div style="font-weight: bold; text-align: left; font-size: 12px; color: #9ca3af;">PILIH DIFFICULTY:</div>
+                <div style="font-weight: bold; text-align: left; font-size: 12px; color: #9ca3af; margin-top: 5px;">PILIH DIFFICULTY:</div>
                 <div class="menu-row">
                     <button id="btnDiffNormal" class="btn btn-select active" onclick="setDifficulty('normal')">Normal</button>
                     <button id="btnDiffHard" class="btn btn-select" onclick="setDifficulty('hard')">Hard</button>
                     <button id="btnDiffExtreme" class="btn btn-select" onclick="setDifficulty('extreme')">Extreme</button>
                 </div>
 
-                <div class="custom-panel">
-                    <div class="custom-panel-title">🛠️ Workshop Kustomisasi Senjata Baru</div>
-                    <div class="input-grid">
-                        <div class="input-field">
-                            <label>Nama Senjata</label>
-                            <input type="text" id="custName" value="Hyperion Blaster">
-                        </div>
-                        <div class="input-field">
-                            <label>Harga Beli (Gold)</label>
-                            <input type="number" id="custPrice" value="1500" min="0">
-                        </div>
-                        <div class="input-field">
-                            <label>Kerusakan (Damage)</label>
-                            <input type="number" id="custDmg" value="45" min="1">
-                        </div>
-                        <div class="input-field">
-                            <label>Jeda Tembak (ms)</label>
-                            <input type="number" id="custDelay" value="200" min="40">
-                        </div>
-                        <div class="input-field">
-                            <label>Kecepatan Peluru</label>
-                            <input type="number" id="custSpeed" value="16" min="5">
-                        </div>
-                        <div class="input-field">
-                            <label>Kapasitas Peluru</label>
-                            <input type="number" id="custAmmo" value="35" min="1">
-                        </div>
-                        <div class="input-field">
-                            <label>Tipe Amunisi</label>
-                            <select id="custType">
-                                <option value="normal">Normal Bullet</option>
-                                <option value="pierce">Piercing Max 3</option>
-                                <option value="explosive">Explosive Rocket</option>
-                            </select>
-                        </div>
-                        <div class="input-field">
-                            <label>Warna Proyektil</label>
-                            <select id="custColor">
-                                <option value="#f43f5e">Merah Neon</option>
-                                <option value="#3b82f6">Biru Elektrik</option>
-                                <option value="#eab308">Kuning Plasma</option>
-                                <option value="#a855f7">Ungu Mistik</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="btn btn-danger" style="margin-top: 5px; font-size: 16px;" onclick="initGame()">MULAI PERTEMPURAN</button>
+                <button class="btn btn-danger" style="margin-top: 10px; font-size: 16px;" onclick="initGame()">MULAI PERTEMPURAN</button>
             </div>
         </div>
 
@@ -520,7 +432,7 @@
                 <div id="shopContainer"></div>
             </div>
             
-            <div style="font-size: 11px; color: #6b7280; text-align: center; line-height: 1.4;">
+            <div style="font-size: 11px; color: #6b7280; text-align: center; line-height: 1.4;" id="controlDesc">
                 <b>Kontrol Utama:</b> Bergerak dengan <b>W, A, S, D</b>.<br>Arahkan tembakan & Klik Kiri dengan <b>Mouse</b>.<br>Tekan tombol <b>R</b> untuk Mengisi Peluru Senjata.
             </div>
         </div>
@@ -535,6 +447,7 @@
 
         let gameMode = "campaign"; 
         let gameDifficulty = "normal";
+        let controlMode = "normal"; // normal, nomouse
         let isLoopRunning = false;
 
         let player = null;
@@ -553,16 +466,17 @@
         // Data Pusat Logistik Persenjataan Komplit
         let WEAPON_REGISTRY = [
             { id: "gun", name: "Standard Gun", price: 0, ammoMax: 7, dmg: 35, fireDelay: 1500, reloadDelay: 3000, color: "#9ca3af", spread: 0, bSpeed: 10, count: 1, isSlow: true, desc: "Pistol bawaan. Efek buff baru: Mampu memperlambat gerak zombie!" },
-            { id: "revolver", name: "Magnum Revolver", price: 120, ammoMax: 6, dmg: 75, fireDelay: 800, reloadDelay: 2000, color: "#60a5fa", spread: 0, bSpeed: 14, count: 1, isKnockback: true, desc: "Revolver berdaya hantam tinggi. Efek buff baru: Mampu memukul mundur zombie!" },
+            { id: "revolver", name: "Magnum Revolver", price: 120, ammoMax: 6, dmg: 50, fireDelay: 800, reloadDelay: 2000, color: "#60a5fa", spread: 0, bSpeed: 14, count: 1, isKnockback: true, desc: "Revolver berdaya hantam tinggi. Efek buff baru: Mampu memukul mundur zombie!" }, 
             { id: "shotgun", name: "Tactical Shotgun", price: 280, ammoMax: 5, dmg: 25, fireDelay: 1000, reloadDelay: 2500, color: "#34d399", spread: 0.35, bSpeed: 9, count: 5, desc: "Menembakkan 5 proyektil sekaligus dalam jangkauan menyebar." },
             { id: "smg", name: "Micro Uzi SMG", price: 500, ammoMax: 30, dmg: 16, fireDelay: 120, reloadDelay: 2200, color: "#f43f5e", spread: 0.12, bSpeed: 12, count: 1, desc: "Kecepatan tembak otomatis sangat tinggi." },
+            { id: "db_shotgun", name: "Double Barrel Shotgun", price: 650, ammoMax: 5, dmg: 25, fireDelay: 1000, reloadDelay: 2500, color: "#059669", spread: 0.35, bSpeed: 9, count: 10, desc: "Versi ganda dari Tactical Shotgun. Menembakkan 10 proyektil sekaligus dengan jangkauan luas." }, 
             { id: "rifle", name: "Assault Rifle AR-15", price: 1000, ammoMax: 25, dmg: 40, fireDelay: 250, reloadDelay: 2400, color: "#fbbf24", spread: 0.04, bSpeed: 15, count: 1, desc: "Akurat, damage stabil, kapasitas seimbang." },
             { id: "crossbow", name: "Vampire Crossbow", price: 1800, ammoMax: 10, dmg: 110, fireDelay: 600, reloadDelay: 1800, color: "#a755f7", spread: 0, bSpeed: 18, count: 1, desc: "Panah super cepat berdaya hancur tinggi." },
             { id: "dual_pistol", name: "Dual Elites", price: 2800, ammoMax: 20, dmg: 30, fireDelay: 180, reloadDelay: 2000, color: "#22d3ee", spread: 0.18, bSpeed: 11, count: 2, desc: "Menembakkan 2 peluru ganda bertubi-tubi." },
             { id: "sniper", name: "Heavy .50 AWP Sniper", price: 4500, ammoMax: 5, dmg: 450, fireDelay: 1800, reloadDelay: 3500, color: "#ec4899", spread: 0, bSpeed: 25, count: 1, reduction: 0.40, desc: "Mekanik Baru: Mengurangi seluruh damage masuk sebesar 40% saat digunakan." },
             { id: "plasma", name: "Plasma Rifle Alien", price: 7000, ammoMax: 50, dmg: 24, fireDelay: 90, reloadDelay: 2000, color: "#06b6d4", spread: 0.08, bSpeed: 13, count: 1, maxPierce: 3, desc: "Mekanik Baru: Damage lebih lemah dari Dual Elites (24 DMG), namun memiliki efek menembus hingga 3 zombie!" },
             { id: "rpg", name: "Rocket Launcher RPG-7", price: 10000, ammoMax: 3, dmg: 550, fireDelay: 1500, reloadDelay: 4000, color: "#f97316", spread: 0, bSpeed: 8, count: 1, isExplosive: true, expRadius: 240, desc: "Mekanik Baru: Kekuatan dihancurkan masif (550 DMG) dengan radius ledakan raksasa area luas." },
-            { id: "minigun", name: "XM214 Microgun", price: 16000, ammoMax: 100, dmg: 40, fireDelay: 70, reloadDelay: 5000, color: "#ef4444", spread: 0.22, bSpeed: 14, count: 1, isExplosive: true, expRadius: 65, desc: "Mekanik Baru: Senjata spam roket mini! Setiap peluru memicu ledakan kecil bertubi-tubi tanpa henti." }
+            { id: "minigun", name: "XM214 Microgun", price: 16000, ammoMax: 100, dmg: 40, fireDelay: 70, reloadDelay: 5000, color: "#ef4444", spread: 0.22, bSpeed: 14, count: 1, maxPierce: 3, isExplosive: true, expRadius: 65, desc: "Mekanik Baru: Senjata spam roket mini! Setiap peluru memicu ledakan kecil bertubi-tubi tanpa henti." }
         ];
 
         // =========================================================================
@@ -577,11 +491,20 @@
 
             initializeDOMEvents() {
                 window.addEventListener("keydown", event => {
-                    this.keys[event.key.toLowerCase()] = true;
+                    if (event.code === "Space") {
+                        event.preventDefault(); // Biar browser gak scroll ke bawah
+                        this.keys["space"] = true;
+                    } else {
+                        this.keys[event.key.toLowerCase()] = true;
+                    }
                 });
 
                 window.addEventListener("keyup", event => {
-                    this.keys[event.key.toLowerCase()] = false;
+                    if (event.code === "Space") {
+                        this.keys["space"] = false;
+                    } else {
+                        this.keys[event.key.toLowerCase()] = false;
+                    }
                 });
                 
                 canvas.addEventListener("mousemove", event => {
@@ -690,7 +613,29 @@
             }
 
             calculateAimAngle() {
-                this.angle = Math.atan2(inputHandler.mouse.y - this.y, inputHandler.mouse.x - this.x);
+                // LOGIKA AUTO-AIM UNTUK MODE TANPA MOUSE
+                if (controlMode === "nomouse") {
+                    let target = null;
+                    let minDist = Infinity;
+                    
+                    for (let i = 0; i < zombies.length; i++) {
+                        let z = zombies[i];
+                        let dx = z.x - this.x;
+                        let dy = z.y - this.y;
+                        let dist = dx * dx + dy * dy;
+                        
+                        if (dist < minDist) {
+                            minDist = dist;
+                            target = z;
+                        }
+                    }
+                    if (target) {
+                        this.angle = Math.atan2(target.y - this.y, target.x - this.x);
+                    }
+                } else {
+                    // LOGIKA AIM MANUAL
+                    this.angle = Math.atan2(inputHandler.mouse.y - this.y, inputHandler.mouse.x - this.x);
+                }
             }
 
             processReloadStatusState(now) {
@@ -728,14 +673,17 @@
                 }
             }
 
-            startReloadMechanic() {
-                this.isReloading = true;
-                this.reloadStartTime = performance.now();
-                pushNotificationLog("⚠️ Mengisi peluru... gerakan melambat!");
-            }
-
             processAutomaticWeaponFiring(now) {
-                if (inputHandler.mouse.isPressed && !this.isReloading) {
+                let isFiring = false;
+                
+                // LOGIKA NEMBAK BERDASARKAN KONTROL
+                if (controlMode === "nomouse") {
+                    isFiring = inputHandler.isKeyDown('space'); 
+                } else {
+                    isFiring = inputHandler.mouse.isPressed;
+                }
+
+                if (isFiring && !this.isReloading) {
                     this.fireActiveWeapon(now);
                 }
             }
@@ -763,6 +711,12 @@
                 let finalDamage = weapon.dmg;
                 if (this.activePowerups.doubleDamage > now) {
                     finalDamage = weapon.dmg * 2;
+                }
+
+                // Global Critical Hit Chance (10% chance for +20% Damage)
+                if (Math.random() < 0.10) {
+                    finalDamage *= 1.20;
+                    createTextParticle(this.x, this.y - 45, "CRIT!", "#facc15", -2.0);
                 }
 
                 this.instantiateProjectiles(weapon, finalDamage);
@@ -1621,58 +1575,31 @@
             document.getElementById(targetId).classList.add("active");
         }
 
-        function registerCustomWeaponFromMenu() {
-            const name = document.getElementById("custName").value || "Custom Blaster";
-            const price = parseInt(document.getElementById("custPrice").value) || 1500;
-            const dmg = parseInt(document.getElementById("custDmg").value) || 45;
-            const delay = parseInt(document.getElementById("custDelay").value) || 200;
-            const speed = parseInt(document.getElementById("custSpeed").value) || 16;
-            const ammo = parseInt(document.getElementById("custAmmo").value) || 35;
-            const type = document.getElementById("custType").value;
-            const color = document.getElementById("custColor").value;
-
-            WEAPON_REGISTRY = WEAPON_REGISTRY.filter(w => w.id !== "custom_weapon");
-
-            let customWeaponConfig = {
-                id: "custom_weapon",
-                name: name,
-                price: price,
-                ammoMax: ammo,
-                dmg: dmg,
-                fireDelay: delay,
-                reloadDelay: 2500,
-                color: color,
-                spread: type === "normal" ? 0.05 : 0.1,
-                bSpeed: speed,
-                count: 1,
-                desc: `Senjata hasil rakitan kustom Anda di Main Menu.`
-            };
-
-            if (type === "pierce") {
-                customWeaponConfig.maxPierce = 3;
-                customWeaponConfig.desc += " Memiliki kemampuan menembus 3 objek zombie.";
-            } else if (type === "explosive") {
-                customWeaponConfig.isExplosive = true;
-                customWeaponConfig.expRadius = 140;
-                customWeaponConfig.desc += " Proyektil memicu ledakan berdaya hancur area.";
+        function setControlMode(modeString) {
+            controlMode = modeString;
+            document.getElementById("btnCtrlNormal").classList.remove("active");
+            document.getElementById("btnCtrlNoMouse").classList.remove("active");
+            
+            if (modeString === "normal") {
+                document.getElementById("btnCtrlNormal").classList.add("active");
+                document.getElementById("controlDesc").innerHTML = "<b>Kontrol Utama:</b> Bergerak dengan <b>W, A, S, D</b>.<br>Arahkan tembakan & Klik Kiri dengan <b>Mouse</b>.<br>Tekan tombol <b>R</b> untuk Mengisi Peluru Senjata.";
+            } else {
+                document.getElementById("btnCtrlNoMouse").classList.add("active");
+                document.getElementById("controlDesc").innerHTML = "<b>Kontrol Tanpa Mouse:</b> Bergerak dengan <b>W, A, S, D</b>.<br>Tembakan Otomatis Arah Zombie Terdekat.<br>Serang dengan <b>SPACEBAR</b>. Isi Peluru dengan <b>R</b>.";
             }
-
-            WEAPON_REGISTRY.push(customWeaponConfig);
         }
 
         // =========================================================================
         // 11. GAME INITIALIZATION / HARD RESET STATE PREVENTS REMAINING ENEMIES
         // =========================================================================
         function initGame() {
-            // PERBAIKAN UTAMA: Bersihkan memori game & entitas dari sesi sebelumnya secara total
+            // Bersihkan memori game & entitas dari sesi sebelumnya secara total
             zombies = [];
             bullets = [];
             drops = [];
             textParticles = [];
             explosionCircles = [];
             screenShakeFrames = 0;
-
-            registerCustomWeaponFromMenu();
 
             document.getElementById("mainMenu").style.display = "none";
             document.getElementById("lblModeUI").innerText = `${gameDifficulty.toUpperCase()} (${gameMode.toUpperCase()})`;
