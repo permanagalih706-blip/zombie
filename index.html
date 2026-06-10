@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zombie Outbreak: The 1000 Waves - Professional Edition</title>
+    <title>Zombie Outbreak: The 100 Waves - Professional Edition</title>
     <style>
         /* =========================================================================
            [CSS GENERAL CORE STYLE]
@@ -327,7 +327,7 @@
 
         <div id="mainMenu" class="overlay">
             <h2>Zombie Outbreak</h2>
-            <p>Bertahan melewati 1000 Wave infeksi. Dilengkapi efek peluru tembus, ledakan dinamis, knockback, dan jaminan pemulihan state checkpoint!</p>
+            <p>Bertahan melewati 100 Wave infeksi. Dilengkapi efek peluru tembus, ledakan dinamis, knockback, dan jaminan pemulihan state checkpoint!</p>
             
             <div class="menu-group">
                 <div style="font-weight: bold; text-align: left; font-size: 12px; color: #9ca3af;">PILIH KONTROL:</div>
@@ -338,7 +338,7 @@
 
                 <div style="font-weight: bold; text-align: left; font-size: 12px; color: #9ca3af; margin-top: 5px;">PILIH MODE GAME:</div>
                 <div class="menu-row">
-                    <button id="btnModeCampaign" class="btn btn-select active" onclick="setMode('campaign')">Campaign (1000 W)</button>
+                    <button id="btnModeCampaign" class="btn btn-select active" onclick="setMode('campaign')">Campaign (100 W)</button>
                     <button id="btnModeEndless" class="btn btn-select" onclick="setMode('endless')">Endless Mode</button>
                     <button id="btnModeDebug" class="btn btn-select btn-debug-tab" onclick="setMode('debug')">🛠️ Debug Mode</button>
                 </div>
@@ -365,7 +365,7 @@
 
         <div id="victoryScreen" class="overlay" style="display: none;">
             <h2 class="victory">MISI BERHASIL!</h2>
-            <p>Luar biasa! Kamu berhasil bertahan sampai Wave 1000. Helikopter penyelamat tiba dan mengevakuasi kamu dari zona karantina!</p>
+            <p>Luar biasa! Kamu berhasil bertahan sampai Wave 100. Helikopter penyelamat tiba dan mengevakuasi kamu dari zona karantina!</p>
             <div class="menu-group">
                 <button class="btn btn-success" onclick="backToMainMenu()">Kembali ke Menu Utama</button>
             </div>
@@ -1424,7 +1424,7 @@
             processProgression() {
                 const now = performance.now();
 
-                if (gameMode === "campaign" && this.waveActiveNumber > 1000) {
+                if (gameMode === "campaign" && this.waveActiveNumber > 100) {
                     triggerCampaignVictory();
                     return;
                 }
@@ -1505,7 +1505,7 @@
             }
 
             synchronizeInterfaceHUDLabels() {
-                let totalCampaignString = "/ 1000";
+                let totalCampaignString = "/ 100";
                 if (gameMode === "endless") totalCampaignString = "(Endless Mode)";
                 if (gameMode === "debug") totalCampaignString = "(Debug Sandbox)";
 
@@ -1771,7 +1771,7 @@
                 WEAPON_REGISTRY.forEach(w => waveManager.snapshotData.ammoCounts[w.id] = w.ammoMax);
             }
 
-            let displayModeCampaignString = "/ 1000";
+            let displayModeCampaignString = "/ 100";
             if (gameMode === "endless") displayModeCampaignString = "(Endless)";
             if (gameMode === "debug") displayModeCampaignString = "(Debug Sandbox)";
 
@@ -1948,7 +1948,7 @@
             textParticles.forEach(particle => particle.draw());
 
             if (waveManager.inBreakState) {
-                let timeRemainingSec = Math.max(0, (waveManager.waveBreakDuration - (performance.now() - waveManager.waveBreakStartTime)) / 1000);
+                let timeRemainingSec = Math.max(0, (waveManager.waveBreakDuration - (performance.now() - waveManager.waveBreakStartTime)) / 100);
                 ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; 
                 ctx.fillRect(0, canvas.height / 2 - 40, canvas.width, 80);
                 
